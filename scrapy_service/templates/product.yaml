@@ -1,0 +1,122 @@
+#Lazada
+lazada_sitemap:
+  allowed_domains: ["lazada.vn"]
+  start_urls: ["http://www.lazada.vn/sitemap.xml"]
+  pattern: []
+  extra_link: "//loc/text()"
+  products:
+    product1:
+      tag_contain: //div[@id="content"]
+      details:
+        name: .//div[@class="product-info-name"]/text()
+        normal_price: .//span[@class="product-price"]/text()
+        discount_price: .//span[@class="product-price-past"]/text()
+        categories: //div[@class="bcr box mbm fsm breadcrumbs"]/ul/li[@class="prs"]/a/text()
+  database:
+    name: lazada
+
+#Web So Sanh
+websosanh:
+  allowed_domains: ["websosanh.vn"]
+  start_urls: ["http://websosanh.vn/"]
+  # pattern: ["cat-"]
+  # It will help the crawler focus on what you want
+  pattern: ["thuc-pham-do-uong"]
+  extra_link: "//a[contains(@href, 'trang')]/@href"
+  link_to_product: "//a[contains(@href, 'so-sanh.htm')]/@href"
+  products:
+    product1:
+      tag_contain: //div[@class="store-item"]
+      details:
+        name: .//div[@class="store-item-col3 "]/h3/a/text()
+        normal_price: .//div[@class="store-item-col2 "]/p[1]//text()
+        discount_price: .//div[@class="store-item-col2 "]/p[1]//text()
+        provider: .//div[@class="store-item-col1"]/a/p[1]/text()
+        categories: //a[@property="v:title" and not(contains(text(),"Trang chủ"))]//text()
+  database:
+    name: websosanh
+
+#Compare
+compare:
+  allowed_domains: ["compare.vn"]
+  start_urls: ["http://www.compare.vn/"]
+  #pattern: ["[0-9]+.html"]
+  # It will help the crawler focus on what you want
+  pattern: ["thuc-pham-do-uong"]
+  extra_link: "//ul[@class='pager']/li/a/@href"
+  link_to_product: '//div[@class="product-group row"]/div[@class="products clearfix"]/div[@class="item"]/div[@class="thumb"]/div[@class="action"]/a[@class="button-1"]/@href'
+  products:
+    product1:
+      tag_contain: //div[@class="store-group row"]/div[@class="stores clearfix"]/div[@class="item"]
+      details:
+        name: //div[@class="main-content"]/div[@class="product-detail clearfix"]/div[@class="caption"]/h1[@itemprop="name" and @class="title"]/text()
+        normal_price: .//p[@class="price"]/strong/text()
+        discount_price: .//p[@class="price"]/strong/text()
+        provider: .//p[@class="tag"]/strong/a/text()
+        categories: //div[@id="breadcrumb"]/div/a//text()
+  database:
+    name: comparevn
+
+#Compare
+cdiscount:
+  allowed_domains: ["cdiscount.vn"]
+  start_urls: ["http://www.cdiscount.vn"]
+  # pattern: [".html"]
+  # Focus to Foods and Drinks
+  pattern: ["thuc-pham"]
+  extra_link: "//a[contains(@href, '/l-') and contains(@href, '.html')]/@href"
+  link_to_product: "//a[contains(@href, '/f-') and contains(@href, '.html')]/@href"
+  products:
+    product1:
+      tag_contain: //div[@class="fpZnTop"]
+      details:
+        name: .//h1[@itemprop="name"]/text()
+        normal_price: .//p[@class="fpStriked"]/text()
+        discount_price: .//p[@class="fpPrice price"]/text()
+        provider: None
+        categories: //a[@itemprop="url"]/span[@itemprop="title" and not(contains(text(),"Trang chủ"))]/text()
+  database:
+    name: cdiscount
+
+
+#Cung Mua
+cungmua:
+  allowed_domains: ["cungmua.com"]
+  start_urls: ["http://www.cungmua.com"]
+  # pattern: ["/"]
+  # Focus to Foods and Drinks
+  pattern: ["thuc-pham"]
+  extra_link: "//a[contains(@href, '.html') and contains(@href, '/')]/@href"
+  link_to_product: "//a[contains(@href, '_p') and contains(@href, '.html')]/@href"
+  products:
+    product1:
+      tag_contain: //div[@class="middle_detail"]
+      details:
+        name: .//h1[@class="deal_detail_name"]/text()
+        normal_price: //span[@class="detail_trueprice" and @id="detail_trueprice"]//text()
+        discount_price: //span[@class="detail_price" and @id="detail_price"]//text()
+        provider: None
+        categories: //ul[@class="menu_ver"]/li/a[contains(@href,"javascript") and not(contains(text(),"Khuyến mãi mới nhất"))]/text()
+  database:
+    name: cungmua
+
+
+#Hot Deal
+hotdeal:
+  allowed_domains: ["hotdeal.vn"]
+  start_urls: ["http://www.hotdeal.vn"]
+  # pattern: ["/"]
+  pattern: ["an-uong"]
+  extra_link: "//a[contains(@href, '/?page')]/@href"
+  link_to_product: "//div[@class='title']/h2/a[contains(@href, '-') and contains(@href, '.html')]/@href"
+  products:
+    product1:
+      tag_contain: //div[@class="product-comment"]/div[@id="content_discussion"]
+      details:
+        name: .//span[@itemprop="name"]/text()
+        normal_price: .//span[@itemprop="price"]/text()
+        discount_price: .//span[@itemprop="price"]/text()
+        provider: None
+        categories: .//span[@itemprop="category"]//text()
+  database:
+    name: hotdeal

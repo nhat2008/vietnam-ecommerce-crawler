@@ -1,0 +1,10 @@
+# Project for crawling data from lazada, websosanh, compare.vn, cdiscount and cungmua with many cooling wrapper
+1. good structure for scrapy with items and pipelines
+2. automatically proxy changing
+3. simply running - don't need to remember the command to run scrapy
+4. flexible config- the crawler gets data by patterns in template/product.yml
+5. save data to databases: mongo or es
+6. applying pybloom for checking duplicate crawled data when crawling
+7. stopping after time -
+# Install with libraries in file requirements.txt
+python app.py

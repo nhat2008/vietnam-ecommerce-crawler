@@ -1,0 +1,9 @@
+python-dev 
+libffi-dev 
+libssl-dev 
+libxml2-dev 
+libxslt1-dev
+Scrapy
+pyyaml
+pymongo
+pybloom
