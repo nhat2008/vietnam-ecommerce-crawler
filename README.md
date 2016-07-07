@@ -1,4 +1,4 @@
-### Project for crawling data from lazada, websosanh, compare.vn, cdiscount and cungmua with many cooling wrapper ###
+### Project for crawling data from lazada, websosanh, compare.vn, cdiscount and cungmua with many cooling wrappers ###
 </br>1. good structure for scrapy with items and pipelines
 </br>2. automatically proxy changing
 </br>3. simply running - don't need to remember the command to run scrapy
